@@ -27,11 +27,7 @@ public class ProductService {
     @PostConstruct
     public void loadProductsFromDB() {
         productList = IntStream.rangeClosed(1, 100)
-                .mapToObj(i -> Product.builder()
-                        .productId(i)
-                        .name("product " + i)
-                        .qty(new Random().nextInt(10))
-                        .price(new Random().nextInt(5000)).build()
+                .mapToObj(i -> new Product(i, "product " + i, new Random().nextInt(10), new Random().nextInt(5000))
                 ).collect(Collectors.toList());
     }
 
@@ -42,7 +38,7 @@ public class ProductService {
 
     public Product getProduct(int id) {
         return productList.stream()
-                .filter(product -> product.getProductId() == id)
+                .filter(product -> product.productId() == id)
                 .findAny()
                 .orElseThrow(() -> new RuntimeException("product " + id + " not found"));
     }
@@ -53,4 +49,5 @@ public class ProductService {
         repository.save(userInfo);
         return "user added to system ";
     }
+
 }

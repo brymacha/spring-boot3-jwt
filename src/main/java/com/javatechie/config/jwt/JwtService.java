@@ -1,4 +1,4 @@
-package com.javatechie.service;
+package com.javatechie.config.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

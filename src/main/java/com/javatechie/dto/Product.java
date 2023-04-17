@@ -1,18 +1,8 @@
 package com.javatechie.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class Product {
-
-    private int productId;
-    private String name;
-    private int qty;
-    private double price;
+public record Product(
+        int productId,
+        String name,
+        int qty,
+        double price) {
 }
